@@ -33,7 +33,6 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <li id="themsanpham1"   style="background-color:rgba(63, 67, 73, 0.897);">
                   <a href="trangchuAdmin.php" style="color: #f5f5f5;">
                     <i class="zmdi zmdi-link"></i> Quản Lý Khách Hàng
-    
                   </a>
                 </li>
                 <li id="editsp">
@@ -59,6 +58,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
                 <li>
                   <a href="donHang.php">
                     <i class="zmdi zmdi-comment-more"></i> Quản Lý Đơn Hàng
+                  </a>
+                </li>
+                <li>
+                  <a href="thongKe.php">
+                    <i class="zmdi zmdi-comment-more"></i> Thống Kê
                   </a>
                 </li>
               </ul>

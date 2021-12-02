@@ -42,6 +42,49 @@ require_once('../mySql_general/config_DB.php');
     margin-left: 5px;
     font-size: 21px;
         } 
+         /* css cho button xử lý đơn hàng */
+  .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content .btn{
+    padding: 5px;
+    margin-left: 20px;
+}
+.dropdown-content .btn:hover{
+    color: red;
+}
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
 </style>
 <body>
  <?php include '../pageHeader/header.php';?>
@@ -49,12 +92,12 @@ require_once('../mySql_general/config_DB.php');
                         <form action="" method="get">
                             <div class="form-group" style="margin-left: 20px;">
                             <label for=""> <strong style="font-size: 23px;"> Kiểm tra đơn hàng </strong> </label>
-                                <input type="text" name="checkDonHang" class="form-control"style="width: 300px; "placeholder="Searching........... input PhoneNumber">
+                            <input type="text" name="checkDonHang" class="form-control"style="width: 300px; "placeholder="Searching........... input PhoneNumber">
                             </div>
                         </form>
                         <div id="wraper">
-                          <table class=" table table-bordered table-hover">
-                            <thead>
+                        <table class=" table table-bordered table-hover">
+                        <thead>
                           <tr>
                                 <th width=20px> STT</th>
                                 <th width=150px style="text-align: center;">MÃ HĐ</th>
@@ -63,55 +106,20 @@ require_once('../mySql_general/config_DB.php');
                                 <th width=200px style="text-align: center;"> SỐ ĐIỆN THOẠI</th>
                                 <th width=200px style="text-align: center;"> SẢN PHẨM MUA </th>
                                 <th width=30px style="text-align: center;"> SL</th>
-                                <th width=50px style="text-align: center;">  SIZE</th>
+                                <th width=50px style="text-align: center;"> SIZE</th>
                                 <th width=40px style="text-align: center;"> GIÁ </th>
                                 <th width=200px style="text-align: center;"> THÀNH TIỀN </th>
                                 <th width=60px style="text-align: center;"> NGÀY ĐẶT HÀNG</th>
                                  <th width=60px style="text-align: center;"> TRẠNG THÁI</th>
-                                   </tr>
+                          </tr>
                               </thead>
                               <tbody>
                               <?php
-                            /* $user='';
-                            if(isset($_SESSION['taikhoan']))
-                            {
-                                $user=$_SESSION['taikhoan'];
-                                $phone=$user['phone'];
-                                $sql=mysqli_query($conn,"select * from hoadon where  phoneNumber=$phone");
-                                if($sql){
-                                    $data=mysqli_fetch_assoc($sql);
-                             if($data!=null)   {
-                                $maHd=$data['maHd'];
-                                $sql= "SELECT donhang.id,hoadon.maHd,hoadon.userName,hoadon.address, hoadon.phoneNumber, donhang.maHang maHang,donhang.slMua sl ,donhang.donGia gia , donhang.size size , donhang.tenHang tenHang, donhang.ngayDatHang ngayDat,donhang.trangThai trangThai  
-                                from hoadon,donhang where hoadon.maHd=donhang.idHd and donhang.idHd=$maHd and hoadon.phoneNumber=$phone";
-                            $kq=executeResult($sql);
-                             var_dump($kq);
-                            die();
-                        $index=0;
-                        foreach($kq as $item){
-                        echo '<tr>
-                        <td>'.(++$index).'</td>
-                        <td style="text-align:center;">'.$item['id'].'</td>
-                        <td style="text-align:center;">'.$item['userName'].'</td>
-                        <td style="text-align:center;"> '.$item['address'].'</td>
-                        <td style="text-align:center;"> '.$item['phoneNumber'].'</td>
-                        <td style="text-align:center;"> '.$item['tenHang'].'</td> 
-                        <td style="text-align:center;"> '.$item['sl'].'</td> 
-                        <td style="text-align:center;"> '.$item['size'].'</td> 
-                        <td style="text-align:center;"> '.number_format($item['gia']).'</td> 
-                        <td style="text-align:center;"> '.number_format($item['sl']*$item['gia']).'</td>
-                        <td> '.date("d/m/Y  H:i:s", strtotime($item['ngayDat'])).'</td>
-                        <td style="text-align:center;"> '.$item['trangThai'].'</td>
-                        </tr> ';
-                    }
-                }
-            }
-          } */
                             $phoneNumber='';
                             if(isset($_GET['checkDonHang']))
                             {
                                 $phoneNumber=$_GET['checkDonHang'];
-                            $sql=mysqli_query($conn,"select * from hoadon where  phoneNumber=$phoneNumber");
+                                $sql=mysqli_query($conn,"select * from hoadon where  phoneNumber=$phoneNumber");
                             if($sql){
                                 $data=mysqli_fetch_assoc($sql);
                             }
@@ -121,41 +129,58 @@ require_once('../mySql_general/config_DB.php');
                                 $sql= "SELECT donhang.id,hoadon.maHd,hoadon.userName,hoadon.address, hoadon.phoneNumber, donhang.maHang maHang,donhang.slMua sl ,donhang.donGia gia , donhang.size size , donhang.tenHang tenHang, donhang.ngayDatHang ngayDat,donhang.trangThai trangThai  
                                 from hoadon,donhang where  hoadon.maHd=donhang.idHd and hoadon.phoneNumber=$phoneNumber  group by hoadon.maHd";
                                 $kq=executeResult($sql);
-                               $mahoadon= $kq[0]['maHd'];
-                             echo '   <button class="btn btn-outline-danger"  style="float: right; margin-right: 20px; margin-bottom: 20px;" onclick="deleteDonHang('.$mahoadon.')"> HỦY ĐƠN HÀNG</button>';
+                           if(!empty($kq)){
+                                $mahoadon= $kq[0]['maHd'];
+                                $trangthai=$kq[0]['trangThai'];
+                             if($trangthai=="Đang giao"){
+                                 echo '<div class="dropdown">
+                                  <button  id ="dropdown" onclick="myFunction()" class="dropbtn" >Xác nhận bạn đã nhận được hàng</button>
+                                  <div id="myDropdown" class="dropdown-content">
+                                  <button  class="btn"onclick="xacNhanDonHang('.$mahoadon.')">Xác nhận </button>
+                                  </div>
+                               </div>';
+                             }
+                             if($trangthai=="Chờ Xử lý đơn" || $trangthai=="Đang giao"){
+                                  echo '<button class="btn btn-outline-danger"  style="float: right; margin-right: 20px; margin-bottom: 20px;" onclick="deleteDonHang('.$mahoadon.')"> HỦY ĐƠN HÀNG</button>';
+                             }
                              $sql1= "SELECT donhang.id,hoadon.userName,hoadon.address, hoadon.phoneNumber, donhang.maHang maHang,donhang.slMua sl ,donhang.donGia gia , donhang.size size , donhang.tenHang tenHang, donhang.ngayDatHang ngayDat,donhang.trangThai trangThai  
-                             from hoadon,donhang where hoadon.maHd=donhang.idHd and donhang.idHd=$maHd and hoadon.phoneNumber=$phoneNumber";
-                                  $kq2=executeResult($sql1);
-                        $index=0;
+                             from hoadon,donhang where hoadon.maHd=donhang.idHd and donhang.idHd=$mahoadon and hoadon.phoneNumber=$phoneNumber";
+                            $kq2=executeResult($sql1);
+                            $index=0;
                          foreach($kq2 as $item){
-                        echo '<tr>
-                        <td>'.(++$index).'</td>
-                        <td style="text-align:center;">'.$item['id'].'</td>
-                        <td style="text-align:center;">'.$item['userName'].'</td>
-                        <td style="text-align:center;"> '.$item['address'].'</td>
-                        <td style="text-align:center;"> '.$item['phoneNumber'].'</td>
-                        <td style="text-align:center;"> '.$item['tenHang'].'</td> 
-                        <td style="text-align:center;"> '.$item['sl'].'</td> 
-                        <td style="text-align:center;"> '.$item['size'].'</td> 
-                        <td style="text-align:center;"> '.number_format($item['gia']).'</td> 
-                        <td style="text-align:center;"> '.number_format($item['sl']*$item['gia']).'</td>
-                        <td> '.date("d/m/Y  H:i:s", strtotime($item['ngayDat'])).'</td>
-                        <td style="text-align:center;"> '.$item['trangThai'].'</td>
-                        </tr> ';
-                    }
-                         }                       
+                              echo '<tr>
+                              <td>'.(++$index).'</td>
+                              <td style="text-align:center;">'.$item['id'].'</td>
+                              <td style="text-align:center;">'.$item['userName'].'</td>
+                              <td style="text-align:center;"> '.$item['address'].'</td>
+                              <td style="text-align:center;"> '.$item['phoneNumber'].'</td>
+                              <td style="text-align:center;"> '.$item['tenHang'].'</td> 
+                              <td style="text-align:center;"> '.$item['sl'].'</td> 
+                              <td style="text-align:center;"> '.$item['size'].'</td> 
+                              <td style="text-align:center;"> '.number_format($item['gia']).'</td> 
+                              <td style="text-align:center;"> '.number_format($item['sl']*$item['gia']).'</td>
+                              <td> '.date("d/m/Y  H:i:s", strtotime($item['ngayDat'])).'</td>
+                              <td style="text-align:center;"> '.$item['trangThai'].'</td>
+                              </tr> ';
+                          }
+                         }   
+                         else
+                         {
+                               echo '<a href="../main/main.php" style="font-size: 18px; position: relative; bottom: 7px; left: 25px;"> Đơn hàng đã giao thành công. Tiếp tục mua sắm nào !!!</a>';
+                         }
+                        }                    
                 }             
                 else
-                echo '<div class="alert alert-success alert-dismissible fade show" style="width: 500px; margin: 0 auto; margin-top:70px; position: absolute; left: 420px;  top:20px;  z-index: 10;" >
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>THÔNG BÁO!</strong> </br>Bạn Không có đơn hàng cho số điện thoại này vui lòng kiểm tra lại.
-              </div>';                            
+                      echo '<div class="alert alert-success alert-dismissible fade show" style="width: 500px; margin: 0 auto; margin-top:70px; position: absolute; left: 420px;  top:20px;  z-index: 10;" >
+                      <button type="button" class="close" data-dismiss="alert">&times;</button>
+                      <strong>THÔNG BÁO!</strong> </br>Bạn Không có đơn hàng cho số điện thoại này vui lòng kiểm tra lại.
+                    </div>';                            
           }                          
                     ?>
                   </tbody>
                     </table>
                     </div>
-</body>
+           </body>
 <script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
 <script src="../pageHeader/header.js"> </script>
 <script>
@@ -165,11 +190,18 @@ function deleteDonHang(maHd){
     return;
     else
     $.post('../admin/deleteDonHang.php',{
-
         'maHd':maHd
     },function(data){
         location.reload();
     })
 }
+function xacNhanDonHang(mahoadon){
+    $.post('../admin/xacNhanDonHang.php',{
+        'mahoadon':mahoadon
+    },function(data){
+    location.reload();
+    })
+}
 </script>
+<script src="../admin/xuLyDon.js"></script>
 </html>

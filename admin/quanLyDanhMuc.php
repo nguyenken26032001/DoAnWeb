@@ -60,6 +60,11 @@ require_once("../mySql_general/function_helper.php");
                     <i class="zmdi zmdi-comment-more"></i> Quản Lý Đơn Hàng
                   </a>
                 </li>
+                <li>
+                  <a href="thongKe.php">
+                    <i class="zmdi zmdi-comment-more"></i> Thống Kê
+                  </a>
+                </li>
               </ul>
             </div>
 

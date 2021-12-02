@@ -11,9 +11,9 @@
               <header>
                 <a href="../main/main.php">KenSport</a>
               </header>
-              <ul class="nav">
-                <li id="nhapdanhmuc" class="active">
-                  <a href="trangchuAdmin.php" >  Thêm khách hàng 
+              <ul class="nav" >
+                <li id="nhapdanhmuc" class="active" style="background-color:rgba(63, 67, 73, 0.897);" >
+                  <a href="trangchuAdmin.php" style="color: #f5f5f5;" >  Thêm khách hàng 
                    
                   </a>
                 </li>
@@ -46,6 +46,11 @@
                 <li>
                   <a href="donHang.php">
                     <i class="zmdi zmdi-comment-more"></i> Quản Lý Đơn Hàng
+                  </a>
+                </li>
+                <li>
+                  <a href="thongKe.php">
+                    <i class="zmdi zmdi-comment-more"></i> Thống Kê 
                   </a>
                 </li>
               </ul>

@@ -99,7 +99,11 @@ if(!empty($_POST)){
                 <li>
                   <a href="donHang.php">
                     <i class="zmdi zmdi-comment-more"></i> Quản Lý Đơn Hàng
-
+                  </a>
+                </li>
+                <li>
+                  <a href="thongKe.php">
+                    <i class="zmdi zmdi-comment-more"></i> Thống Kê
                   </a>
                 </li>
               </ul>

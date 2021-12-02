@@ -107,6 +107,11 @@ require_once("../mySql_general/function_helper.php");
                     <i class="zmdi zmdi-comment-more"></i> Quản Lý Đơn Hàng
                   </a>
                 </li>
+                <li>
+                  <a href="thongKe.php">
+                    <i class="zmdi zmdi-comment-more"></i> Thống Kê
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -142,24 +147,6 @@ require_once("../mySql_general/function_helper.php");
                       $sql= 'select hoadon.maHd,hoadon.userName, donhang.tenHang tenHang ,donhang.ngayDatHang  ngayDat,donhang.trangThai from hoadon, donhang where hoadon.maHd=donhang.idHd group by donhang.idHd ';
                       $order=executeResult($sql);
                       $index=0;
-                      /* foreach($order as $item){
-                        echo '<tr>
-                                <td>'.(++$index).'</td>
-                                <td style="text-align:center;"> '.$item['maHd'].'</td>
-                                <td style="text-align:center;"> '.$item['userName'].'</td>
-                                <td style="text-align:center;"> '.$item['tenHang'].'</td>  
-                                <td> '.date("d/m/Y  H:i:s", strtotime($item['ngayDat'])).'</td>
-                                <td style="text-align:center;" >  <a href="chiTietDonHang.php?maHd='.$item['maHd'].'"> <button class="btn btn-warning"  id="edit" >  CHI TIẾT </button> </a></td>
-                                <td>  
-                                <div class="dropdown">
-                                <button  id ="dropdown" onclick="myFunction()" class="dropbtn" >XL ĐƠN</button>
-                                <div id="myDropdown" class="dropdown-content">
-                                  <button onclick="XacNhanDonHang('.$item['maHd'].')" ">Xác nhận đơn hàng </button>
-                                </div>
-                              </div></td>
-                                <td style="text-align:center;" >  <button class="btn btn-danger" id="delete"  onclick="deleteOrder('.$item['maHd'].')" > Delete</button></td>
-                              </tr> ';
-                      } */
                ?>
                       <!--  foreach -->
                       <?php 
@@ -173,7 +160,7 @@ require_once("../mySql_general/function_helper.php");
                                 <td>  <?php  echo date("d/m/Y  H:i:s", strtotime($item['ngayDat'])) ?> </td>
                                 <td style="text-align:center;" >  <a href="chiTietDonHang.php?maHd= <?php  echo $item['maHd']?>"> <button class="btn btn-warning"  id="edit" >  CHI TIẾT </button> </a></td>
                                 <?php  
-                                if($item['trangThai']=="Đang giao")
+                                if($item['trangThai']=="Đang giao" ||$item['trangThai']=="Đã lấy hàng")
                                  echo '<td style="  color:red; "> Đã xl đơn </td>';
                                  else 
                                  echo ' <td>  

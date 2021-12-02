@@ -9,16 +9,10 @@ if(isset($_POST['submit']))
    if(isset($_POST['password'])){
     $password=$_POST['password'];
     }
-    // if($username=="Admin"&& $password=="26032001"){
-    //     $_SESSION['Admin']="Admin";
-    //     header("location: ../main/main.php");
-    // }
     $sql=mysqli_query($conn,"select * from khachhang where userName='$username' and passWord='$password'");
     if($sql){
         $data=mysqli_fetch_assoc($sql);
     }
-
-  
     if($data!=null && count($data)>0){
         if(isset($_SESSION['cart'])){
             unset($_SESSION['cart']);
@@ -37,11 +31,7 @@ if(isset($_POST['submit']))
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>THÔNG BÁO!</strong> </br>Tên đăng nhập hoặc Mật Khẩu của bạn không chính xác vui lòng kiểm tra lại.
       </div>';
-    }
-    // var_dump($_SESSION['taikhoan']);
-    // die();
-
-    
+    }  
 }
 ?>
 
@@ -60,10 +50,6 @@ if(isset($_POST['submit']))
     <title> Form Login</title>
 </head>
 <body>
-
-
-
-
     <div  id="total">
         <form action="" id="formLogin" method="POST" name="formlogin" onsubmit=" return checkInformation()">
             <h1 class="formheading"> form đăng nhập</h1>

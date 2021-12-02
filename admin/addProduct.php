@@ -101,6 +101,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');//lấy thời gian của việt n
                     <i class="zmdi zmdi-comment-more"></i> Quản Lý Đơn Hàng
                   </a>
                 </li>
+                <li>
+                  <a href="thongKe.php">
+                    <i class="zmdi zmdi-comment-more"></i> Thống Kê
+                  </a>
+                </li>
               </ul>
             </div>
 
