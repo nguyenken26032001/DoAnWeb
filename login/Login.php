@@ -61,7 +61,8 @@ if(isset($_POST['submit']))
                 <i class="fas fa-key"></i>
                 <input type="password" class="forminput"  id="password"placeholder="Mật khẩu" name="password">
                 <div id="eye">
-                    <i class="fas fa-eye"></i>
+                <i class="fa-regular fa-eye"></i>
+                <i class="fa-regular fa-eye-slash"></i>
                 </div>
             </div>
             <div id="dang_ki">

@@ -248,6 +248,7 @@ cursor: pointer;
   }
   #search {
       position: relative;
+      left: 50px;
   }
 
   #search #search_icon{

@@ -19,7 +19,7 @@
 #cart{
     position: relative;
     top:28px;
-    right: -295px;
+    left: 643px;
 }
 
 .menu_icon #account {

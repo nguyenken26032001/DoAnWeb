@@ -139,13 +139,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');//lấy thời gian của việt n
                           <a href="quanLySanPham.php"> <button  type="submit" class="btn btn-success" name="addProduct" id="addProduct" style="width: 250px; margin-left: 300px;" > ADD PRODUCT </button></a>
 
               </div><!-- close div md-9 -->
-              <div class="col-md-3" style="border: 1px solid green; padding-top: 10px; padding-bottom: 10px;">
+              <div class="col-md-3" style="border: 1px solid green; padding-top: 10px; padding-bottom: 10px; ">
               <div class="form-group">
                               <label for="tenNhom">Hình Ảnh</label>
                               <input required="true" type="text" class="form-control" id="thumbnail" name="thumbnail"   onchange="upadateImage()" placeholder="Link hình ảnh">
                               <img src="<?php  $thumbnail ?>" alt="" style="max-width: 160px;" id="img_thumbnail">
                           </div>
-                          <div class="form-group">
+                           <div class="form-group">
                           <label for="danhMuc"> Danh Mục</label>
                           <select  class="form-control"   name="category" id="category">
                          <option > <---Thuộc danh mục---> </option>
@@ -170,33 +170,13 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');//lấy thời gian của việt n
               </div><!-- close div md-3 -->
             </div>
             </form>
-
-
-
-
-
-
-
-
-
-                       
-                         
-                        
-                         
-                      
-                         
                       </div>
                     </div>
                   </div>
-                
-
                 </div>
-
             </div>
-           
           </div>
     </div>
-    
 </body>
 <script>
      function upadateImage(){
